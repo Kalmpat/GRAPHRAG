@@ -10,7 +10,7 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-DATA_PATH = r"data"
+DATA_PATH = r"../data"
 
 os.makedirs(DATA_PATH, exist_ok=True)
 
@@ -28,8 +28,23 @@ llm_transformer = LLMGraphTransformer(
     node_properties=True,
     strict_mode=False,
     additional_instructions=(
-        "Extract detailed attributes for each entity as node properties whenever present in the text. "
-        "For example, if a person's age or occupation is mentioned, attach it as a property."
+        "Only extract entities and relationships that are explicitly stated in the text — "
+        "never infer or guess missing information. "
+        "Normalize entity names: use the most complete and specific form found in the text "
+        "(e.g. full name over initials, official name over abbreviation), and always use the "
+        "same normalized form if the same entity is mentioned multiple times or referred to "
+        "by a pronoun or a shorter alias. "
+        "Attach a property to a node only when the corresponding fact is directly stated in "
+        "the text near that entity (e.g. age, occupation, date, location, quantity, status). "
+        "Do not attach properties inferred from context or general knowledge. "
+        "Name relationship types as a concise, uppercase, verb-based label in SNAKE_CASE "
+        "(e.g. WORKS_AT, LOCATED_IN, PART_OF), and reuse the same relationship type across "
+        "chunks for semantically identical connections rather than inventing near-synonyms. "
+        "Prefer a small, reusable set of entity types over creating a new, overly specific "
+        "type for each individual document's subject matter."
+        "Only translate node labels and relationship type names into English — never translate "
+        "entity names, node property values, or any other extracted text content; keep those in "
+        "their original language exactly as they appear in the source. "
     )
 )
 
@@ -37,7 +52,6 @@ graph = Neo4jGraph()
 
 loader = PyPDFDirectoryLoader(DATA_PATH)
 raw_documents = loader.load()
-print(f"Összesen {len(raw_documents)} oldal/dokumentum lett beolvasva.")
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1200,
