@@ -5,7 +5,7 @@ Ez a projekt a `data/` mappában elhelyezett PDF dokumentumokból épít gráfal
 ## Projektstruktúra
 
 ```text
-GraphRAG/
+project-root/
 ├── data/                  <-- Helyezd ide a feldolgozandó PDF fájlokat
 │   └── README.md
 ├── src/
