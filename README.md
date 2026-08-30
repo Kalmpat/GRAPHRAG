@@ -1,6 +1,6 @@
 # GRAPHRAG
 
-Ez a projekt a `data/` mappában elhelyezett PDF dokumentumokból épít gráfolapú tudásbázist.
+Ez a projekt a `data/` mappában elhelyezett PDF dokumentumokból épít gráfalapú tudásbázist.
 
 ## Projektstruktúra
 
