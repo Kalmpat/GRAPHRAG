@@ -12,7 +12,7 @@ project-root/
 │   ├── create_vector_index.py  <-- Vektoros indexet létrehozó szkript
 │   ├── kg_builder.py           <-- Tudásgráfot (Knowledge Graph) építő szkript
 │   ├── old_graphbuilder.py     <-- Korábbi graph építő szkript
-│   └── vector_cypher_rag.py    <-- Vektoros és Cypher-alapú RAG lekérdező szkript
+│   ├── vector_cypher_rag.py    <-- Vektoros és Cypher-alapú GraphRAG lekérdező szkript
 │   └── text2cypher_rag.py      <-- Text2Cypher alapú GraphRAG lekérdező
 ├── .env_sample            <-- Minta beállítások (_sample törlése --> .env)
 ├── .gitignore
