@@ -6,5 +6,5 @@ langchain-google-genai
 langchain-core
 python-dotenv
 neo4j
-tqdm
-unstructured[all-docs]
+neo4j-graphrag
+sentence-transformers
