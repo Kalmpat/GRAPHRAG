@@ -1,9 +1,5 @@
 import os
 from dotenv import load_dotenv
-
-
-
-
 import asyncio
 from neo4j import GraphDatabase
 from neo4j_graphrag.llm import OpenAILLM
@@ -66,6 +62,8 @@ async def process_pdf_folder(folder_path):
         print(f"Feldolgozás alatt: {pdf_file}")
         result = await kg_builder.run_async(file_path=pdf_file)
         print(f"Kész: {pdf_file}")
+
+    neo4j_driver.close()
 
 if __name__ == "__main__":
     asyncio.run(process_pdf_folder(DATA_PATH))
