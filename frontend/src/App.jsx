@@ -10,6 +10,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { SectionCards } from "./components/section-cards";
 import { DocumentManager } from "./components/document-manager";
+import { MessageScrollerDemo } from "./components/messagescroller";
+import { KnowledgeGraphVisualization } from "./components/visualization";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -54,13 +56,19 @@ export default function App() {
               )}
 
               {activeTab === "home" && (
-                <div className="space-y-4">
-                  <h1 className="text-2xl font-bold">GraphRAG Chatbot</h1>
-                  <p className="text-muted-foreground">
-                    Itt építjük fel a keresőt és a chatet.
-                  </p>
+              <div className="space-y-4">
+                <h1 className="text-2xl font-bold">GraphRAG Chatbot</h1>
+                <p className="text-muted-foreground"></p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className=" rounded-lg">
+                    <MessageScrollerDemo />
+                  </div>
+                  <div className=" rounded-lg  md:col-span-2 ">
+                     <KnowledgeGraphVisualization/>
+                  </div>
                 </div>
-              )}
+              </div>
+            )}
 
               {activeTab === "documents" && (
                 <div className="space-y-4">
