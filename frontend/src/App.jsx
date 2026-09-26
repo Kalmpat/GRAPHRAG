@@ -8,6 +8,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { useState } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { SectionCards } from "./components/section-cards";
+import { DocumentManager } from "./components/document-manager";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -36,6 +38,18 @@ export default function App() {
                   <p className="text-muted-foreground mt-1">
                     Itt fog megjelenni a kiválasztott menüpont tartalma.
                   </p>
+                  <div className="flex flex-1 flex-col">
+                    <div className="@container/main flex flex-1 flex-col gap-2">
+                      <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+                        <SectionCards />
+                        <div className="px-4 lg:px-6">
+
+                        </div>
+                
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               )}
 
@@ -50,10 +64,9 @@ export default function App() {
 
               {activeTab === "documents" && (
                 <div className="space-y-4">
-                  <h1 className="text-2xl font-bold">Dokumentumkezelő</h1>
-                  <p className="text-muted-foreground">
-                    Dokumentumok feltöltése és kezelése.
-                  </p>
+                  <h1 className="text-2xl font-bold">Document Manager</h1>
+             
+                  <DocumentManager/>
                 </div>
               )}
 
