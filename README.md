@@ -8,11 +8,16 @@ Ez a projekt a `data/` mappában elhelyezett PDF dokumentumokból épít gráfal
 project-root/
 ├── backend/
 │   ├── main.py                 <-- FastAPI alkalmazás belépési pontja (lifespan, CORS, routerek)
-│   ├── deps.py                 <-- Központi függőségkezelő (körkörös importok elkerülése, állapottárolás)
+│   ├── deps.py                 <-- Központi függőségkezelő (körkörös importok elkerülése állapottárolás)
 │   ├── RagEngine.py            <-- RAG lekérdező motor (Neo4j és Gemini integráció)
 │   └── routers/
 │       ├── query.py            <-- RAG lekérdezések és chat history API végpontjai (`/api/v1/query`)
 │       └── upload.py           <-- PDF fájlok feltöltése és kezelése (`/api/v1/uploadfile`)
+├── frontend/                   <-- Felhasználói felület (React / Vite / Next.js)
+│   ├── src/                    <-- Frontend forráskód (komponensek, oldalak)
+│   ├── public/                 <-- Statikus fájlok
+│   ├── package.json            <-- Node.js függőségek és szkriptek
+│   └── stb.
 ├── data/                  <-- Helyezd ide a feldolgozandó PDF fájlokat
 │   └── README.md
 ├── src/
@@ -33,8 +38,17 @@ pip install -r requirements.txt
 ```
 
 # Backend Indítása
-A backend FastAPI szerver elindításához futtasd az alábbi parancsot a backend/ könyvtárból:
+A backend FastAPI szerver elindításához futtasd az alábbi parancsot a backend/ (cd frontend) könyvtárból:
 
 ```commandline
 uvicorn main:app --reload
+```
+
+# Frontend Indítása
+
+A frontend REACT szerver elindításához futtasd az alábbi parancsokat a frontend/ (cd frontend)könyvtárból:
+
+```commandline
+npm install
+npm run dev
 ```
